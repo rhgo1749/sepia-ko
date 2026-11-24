@@ -1,5 +1,7 @@
 # sepia
 
+> Fork of [Nanako0129/sepia](https://github.com/Nanako0129/sepia) (MIT) adding a Korean calibration layer (`references/languages/ko.md`) and version 0.14.0. The upstream licensing, attribution and all English/Chinese content are unchanged. For upstream installs, use the upstream README instead.
+
 **English** | [繁體中文](README.zh-TW.md) | [简体中文](README.zh-CN.md)
 
 [![behavioral eval](https://github.com/Nanako0129/sepia/actions/workflows/behavioral-eval.yml/badge.svg)](https://github.com/Nanako0129/sepia/actions/workflows/behavioral-eval.yml) [![version consistency](https://github.com/Nanako0129/sepia/actions/workflows/version-consistency.yml/badge.svg)](https://github.com/Nanako0129/sepia/actions/workflows/version-consistency.yml) [![release](https://img.shields.io/github/v/release/Nanako0129/sepia)](https://github.com/Nanako0129/sepia/releases/latest) [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -153,6 +155,14 @@ Chinese text loads `references/languages/zh.md`, calibrating the style pass acro
 
 > **Notice:** The limits of all three empirical Chinese sources are stated in `references/languages/zh.md`.
 
+Korean text loads `references/languages/ko.md`, calibrating the style pass at the strength of the measured Korean evidence that exists:
+
+| Layer / Source | Nature of evidence | Corpus & calibration details |
+|---|---|---|
+| KatFish / KatFishNet (ACL 2025, arXiv:2503.00032) | Measured benchmark | Human vs LLM Korean text across essays, poetry and paper abstracts (GPT-4o, Solar, Qwen2 72B, Llama3.1 70B). Comma usage patterns are the strongest single detection feature; spacing and POS-n-gram diversity are secondary. Expert evaluation names comma overuse, paraphrase-repetition and overshoot maturity as the dominant LLM tells. |
+
+Everything in that file beyond those measured findings is marked Sepia inference. Sentence-length spread, durations and absolute comma counts are deliberately not given — no Korean corpus measures them.
+
 ## Install
 
 > **Notice:** Every command below is written for **user scope** — install once, use it in every project.
@@ -261,7 +271,7 @@ sepia/
 ├── skills/
 │   ├── sepia/                # canonical skill (Agent Skills standard)
 │   │   ├── SKILL.md          # routing, operations, calibration rules, guardrails
-│   │   └── references/       # passes, rubric, fingerprints, domain rules, languages/zh.md, voice-skills (experimental)
+│   │   └── references/       # passes, rubric, fingerprints, domain rules, languages/zh.md, languages/ko.md, voice-skills (experimental)
 │   ├── sepia-write/SKILL.md  # thin fixed-operation wrappers
 │   ├── sepia-review/SKILL.md
 │   ├── sepia-refactor/SKILL.md
